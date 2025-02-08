@@ -3,301 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harish Yellela's Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: white;
-            position: fixed;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
-        .sidebar h2 {
-            text-align: center;
-            padding: 20px;
-            background-color: #34495e;
-            margin: 0;
-            border-bottom: 1px solid #34495e;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar ul li {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #34495e;
-            transition: background-color 0.3s;
-        }
-        .sidebar ul li:hover {
-            background-color: #1abc9c;
-        }
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
-        .sidebar footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #34495e;
-            border-top: 1px solid #34495e;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            background-color: white;
-            flex-grow: 1;
-            overflow-y: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .header img {
-            border-radius: 50%;
-            margin-right: 20px;
-            width: 100px;
-            height: 100px;
-        }
-        .header h1 {
-            margin: 0;
-            color: #2c3e50;
-            flex-basis: 100%;
-        }
-        .header p {
-            margin: 0;
-            color: #2c3e50;
-            flex-basis: 100%;
-        }
-        .section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #ecf0f1;
-            transition: background-color 0.3s ease;
-        }
-        .section h2 {
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            color: #2c3e50;
-        }
-        .section ul {
-            list-style-type: disc;
-            margin: 0;
-            padding-left: 20px;
-        }
-        .section ul li {
-            margin-bottom: 10px;
-        }
-        @keyframes blink {
-            0% { background-color: #f1c40f; }
-            50% { background-color: #ecf0f1; }
-            100% { background-color: #f1c40f; }
-        }
-        .highlighted {
-            animation: blink 0.5s linear 3;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 30px;
-            height: 30px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 10;
-            cursor: pointer;
-        }
-        .hamburger span {
-            width: 100%;
-            height: 4px;
-            background-color: #2c3e50;
-            margin: 4px 0;
-            transition: all 0.3s ease;
-        }
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .content {
-                margin-left: 0;
-                padding: 10px;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            .header {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="hamburger" onclick="toggleSidebar()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="sidebar">
-        <h2>Harish Yellela</h2>
-        <ul>
-            <li><a href="#about" onclick="highlightSection('#about')">About</a></li>
-            <li><a href="#skills" onclick="highlightSection('#skills')">Skills</a></li>
-            <li><a href="#contact" onclick="highlightSection('#contact')">Contact Details</a></li>
-            <li><a href="#experience" onclick="highlightSection('#experience')">Experience</a></li>
-            <li><a href="#certifications" onclick="highlightSection('#certifications')">Certifications</a></li>
-            <li><a href="#achievements" onclick="highlightSection('#achievements')">Achievements</a></li>
-            <li><a href="#education" onclick="highlightSection('#education')">Education</a></li>
-        </ul>
-        <footer>
-            &copy; 2025 Harish Yellela
-        </footer>
-    </div>
-    <div class="content">
-        <div class="header">
-            <img src="https://harishyellela.github.io/myprofilee/Harish_pic.jpg" alt="Harish Yellela" width="100" height="100">
-            <div>
-                <h1>Harish Yellela</h1>
-                <p>MES - APRISO - Developer</p>
-                <p>Hyderabad | +91 7013899455 | <a href="mailto:yellelaharish@gmail.com">yellelaharish@gmail.com</a></p>
-            </div>
-        </div>
-        <div id="about" class="section">
-            <h2>About</h2>
-            <p>3 Years Experienced Apriso Applications Developer skilled in designing and developing user interfaces, screens, and functionalities using Process Builder (2019 and 2023). Proficient in tools like Apriso Process Builder, Apriso Desktop Client, Global Process Manager, Configuration Manager, and more. Strong problem-solving and technical skills, including JavaScript, HTML, CSS, SQL Server, and SSRS Reports.</p>
-        </div>
-        <div id="skills" class="section">
-            <h2>Skills</h2>
-            <ul>
-                <li>Apriso</li>
-                <li>JavaScript</li>
-                <li>Ajax</li>
-                <li>HTML5</li>
-                <li>CSS</li>
-                <li>SQL Server Management Studio (SSMS)</li>
-                <li>SQL Server Reporting Services (SSRS)</li>
-                <li>Generative AI (Intermediate Level)</li>
-            </ul>
-        </div>
-        <div id="contact" class="section">
-            <h2>Contact Details</h2>
-            <p>Harish Yellela</p>
-            <p>Hyderabad | +91 7013899455 | <a href="mailto:yellelaharish@gmail.com">yellelaharish@gmail.com</a></p>
-        </div>
-        <div id="experience" class="section">
-            <h2>Experience</h2>
-            <h3>Apriso Developer | Project - Beckton Dickinson Healthcare (2021 - Present)</h3>
-            <ul>
-                <li>Currently working on developing/upgrading SFM applications in Apriso version 2023 using SQL Server.</li>
-                <li>Developed and implemented multiple plant-based and global applications across various projects.</li>
-                <li>Engaged in the full Software Development Lifecycle (SDLC), including designing, developing, unit testing, deploying, performance quality (PQ) support, and production support.</li>
-                <li>Apriso Process Builder: Developed applications using Apriso Process Builder with different business components, business controls, web services, etc., to meet specific business and user requirements.</li>
-                <li>Apriso Desktop Client: Configured master data, set up scheduled jobs, set up roles, etc., with Apriso Desktop Client to align with user needs.</li>
-                <li>Global Process Manager: Deployed developed/fixed content to various servers (QA/PQ/PROD) using Global Process Manager.</li>
-                <li>Transformed multiple web applications into Apriso Standard Applications, improving performance and user experience, and customizing features to meet user requirements.</li>
-            </ul>
-        </div>
-                
-                        <div id="certifications" class="section">
-            <h2>Certifications</h2>
-            <ul>
-                <li>DELMIA - Operations Management Apriso Process Builder - Implement</li>
-                <li>DELMIA - Brand Essentials</li>
-                <li>Intro to SQL for Data Science by Data Camp</li>
-                <li>SQL Server by LinkedIn</li>
-            </ul>
-        </div>
-        <div id="achievements" class="section">
-            <h2>Achievements</h2>
-            <ul>
-                <li>"Star of the Month Award" for outstanding contributions to the organization.</li>
-                <li>"On the Spot Award" for developing applications ahead of the given estimation, with fewer issues.</li>
-                <li>"Best Team Award" for completing a project within the given timeline.</li>
-            </ul>
-        </div>
-        <div id="education" class="section">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Bachelor of Technology</strong> | Narasaraopet Engineering College, Narasaraopet (2017 - 2021)</li>
-                <ul>
-                    <li>GPA: 7.9 | Computer Science and Engineering</li>
-                </ul>
-            </ul>
-        </div>
-    </div>
-    <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
-        }
-
-        function closeSidebar() {
-            document.querySelector('.sidebar').classList.remove('active');
-        }
-
-        function highlightSection(id) {
-            document.querySelector(id).scrollIntoView({
-                behavior: 'smooth'
-            });
-            if (window.innerWidth <= 768) {
-                toggleSidebar();
-            }
-            const section = document.querySelector(id);
-            section.classList.add('highlighted');
-            setTimeout(() => {
-                section.classList.remove('highlighted');
-            }, 1000);
-        }
-
-        document.querySelectorAll('.sidebar ul li a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const sectionId = anchor.getAttribute('href');
-                highlightSection(sectionId);
-                closeSidebar();
-            });
-        });
-        document.querySelector('.content').addEventListener('click', function() {
-        closeSidebar();
-    });
-    </script>
-</body>
-</html>
-<!-- Page Maintaince Html Code below -->
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Maintenance</title>
+    <title>Verification</title>
     <style>
         body {
             display: flex;
@@ -306,54 +12,81 @@
             height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: #ecf0f1;
+            background-color: #f0f0f0;
         }
         .container {
             text-align: center;
             padding: 40px;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
             width: 100%;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
         h1 {
-            font-size: 48px;
+            font-size: 24px;
             margin-bottom: 20px;
-            color: #ecf0f1;
+            color: #333;
         }
-        p {
-            font-size: 18px;
+        .code {
+            font-size: 20px;
+            font-weight: bold;
             margin-bottom: 20px;
-            color: #bdc3c7;
+            color: #2c3e50;
         }
-        .loader {
-            border: 8px solid #ecf0f1;
-            border-radius: 50%;
-            border-top: 8px solid #3498db;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            width: 100%;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="loader"></div>
-        <h1>We'll be back soon!</h1>
-        <p>We're currently performing some maintenance. Please check back later.</p>
+        <h1>Verification</h1>
+        <p>Type the following code to proceed:</p>
+        <p class="code" id="randomCode"></p>
+        <input type="text" id="verificationInput" placeholder="Enter code here">
+        <button class="btn" onclick="verify()">Verify</button>
     </div>
-</body>
-</html>-->
+    <script>
+        function generateRandomCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            const length = 6;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
 
+        function verify() {
+            const input = document.getElementById('verificationInput').value;
+            const randomCode = document.getElementById('randomCode').textContent;
+            if (input === randomCode) {
+                window.location.href = 'Harish_resume_web.html';
+            } else {
+                alert('Verification failed. Please try again.');
+            }
+        }
+
+        document.getElementById('randomCode').textContent = generateRandomCode();
+    </script>
+</body>
+</html>
