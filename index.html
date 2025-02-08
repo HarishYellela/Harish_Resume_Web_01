@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #f5f5f5;
             display: flex;
+            flex-direction: column;
         }
         .sidebar {
             width: 250px;
@@ -22,6 +23,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease;
         }
         .sidebar h2 {
             text-align: center;
@@ -62,6 +64,7 @@
             flex-grow: 1;
             overflow-y: auto;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
         .header {
             display: flex;
@@ -70,18 +73,23 @@
             background-color: #ecf0f1;
             border-radius: 8px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         .header img {
             border-radius: 50%;
             margin-right: 20px;
+            width: 100px;
+            height: 100px;
         }
         .header h1 {
             margin: 0;
             color: #2c3e50;
+            flex-basis: 100%;
         }
         .header p {
             margin: 0;
             color: #2c3e50;
+            flex-basis: 100%;
         }
         .section {
             margin-bottom: 40px;
@@ -103,19 +111,63 @@
         .section ul li {
             margin-bottom: 10px;
         }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 100%;
+            height: 4px;
+            background-color: #2c3e50;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .content {
+                margin-left: 0;
+                padding: 10px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="hamburger" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <div class="sidebar">
         <h2>Harish Yellela</h2>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact Details</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#education">Education</a></li>
+            <li><a href="#about" onclick="toggleSidebar()">About</a></li>
+            <li><a href="#skills" onclick="toggleSidebar()">Skills</a></li>
+            <li><a href="#contact" onclick="toggleSidebar()">Contact Details</a></li>
+            <li><a href="#experience" onclick="toggleSidebar()">Experience</a></li>
+            <li><a href="#certifications" onclick="toggleSidebar()">Certifications</a></li>
+            <li><a href="#achievements" onclick="toggleSidebar()">Achievements</a></li>
+            <li><a href="#education" onclick="toggleSidebar()">Education</a></li>
         </ul>
         <footer>
             &copy; 2025 Harish Yellela
@@ -193,12 +245,19 @@
         </div>
     </div>
     <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+
         document.querySelectorAll('.sidebar ul li a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(anchor.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
             });
         });
     </script>
