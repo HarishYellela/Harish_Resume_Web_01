@@ -96,6 +96,7 @@
             padding: 20px;
             border-radius: 8px;
             background-color: #ecf0f1;
+            transition: background-color 0.3s ease;
         }
         .section h2 {
             border-bottom: 2px solid #eaeaea;
@@ -110,6 +111,14 @@
         }
         .section ul li {
             margin-bottom: 10px;
+        }
+        @keyframes blink {
+            0% { background-color: #f1c40f; }
+            50% { background-color: #ecf0f1; }
+            100% { background-color: #f1c40f; }
+        }
+        .highlighted {
+            animation: blink 0.5s linear 3;
         }
         .hamburger {
             display: none;
@@ -161,13 +170,13 @@
     <div class="sidebar">
         <h2>Harish Yellela</h2>
         <ul>
-            <li><a href="#about" onclick="toggleSidebar()">About</a></li>
-            <li><a href="#skills" onclick="toggleSidebar()">Skills</a></li>
-            <li><a href="#contact" onclick="toggleSidebar()">Contact Details</a></li>
-            <li><a href="#experience" onclick="toggleSidebar()">Experience</a></li>
-            <li><a href="#certifications" onclick="toggleSidebar()">Certifications</a></li>
-            <li><a href="#achievements" onclick="toggleSidebar()">Achievements</a></li>
-            <li><a href="#education" onclick="toggleSidebar()">Education</a></li>
+            <li><a href="#about" onclick="highlightSection('#about')">About</a></li>
+            <li><a href="#skills" onclick="highlightSection('#skills')">Skills</a></li>
+            <li><a href="#contact" onclick="highlightSection('#contact')">Contact Details</a></li>
+            <li><a href="#experience" onclick="highlightSection('#experience')">Experience</a></li>
+            <li><a href="#certifications" onclick="highlightSection('#certifications')">Certifications</a></li>
+            <li><a href="#achievements" onclick="highlightSection('#achievements')">Achievements</a></li>
+            <li><a href="#education" onclick="highlightSection('#education')">Education</a></li>
         </ul>
         <footer>
             &copy; 2025 Harish Yellela
@@ -217,7 +226,8 @@
                 <li>Transformed multiple web applications into Apriso Standard Applications, improving performance and user experience, and customizing features to meet user requirements.</li>
             </ul>
         </div>
-        <div id="certifications" class="section">
+                
+                        <div id="certifications" class="section">
             <h2>Certifications</h2>
             <ul>
                 <li>DELMIA - Operations Management Apriso Process Builder - Implement</li>
@@ -249,17 +259,35 @@
             document.querySelector('.sidebar').classList.toggle('active');
         }
 
+        function closeSidebar() {
+            document.querySelector('.sidebar').classList.remove('active');
+        }
+
+        function highlightSection(id) {
+            document.querySelector(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+            if (window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+            const section = document.querySelector(id);
+            section.classList.add('highlighted');
+            setTimeout(() => {
+                section.classList.remove('highlighted');
+            }, 1000);
+        }
+
         document.querySelectorAll('.sidebar ul li a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(anchor.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
+                const sectionId = anchor.getAttribute('href');
+                highlightSection(sectionId);
+                closeSidebar();
             });
         });
+        document.querySelector('.content').addEventListener('click', function() {
+        closeSidebar();
+    });
     </script>
 </body>
 </html>
